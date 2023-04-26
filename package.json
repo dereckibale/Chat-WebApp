@@ -1,0 +1,23 @@
+{
+  "name": "realtime",
+  "version": "1.0.0",
+  "description": "to make a realtime chat web app",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon ./app.js --exec babel-node -e js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "dereck",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongoose": "^7.0.5",
+    "nodemon": "^2.0.22",
+    "socket.io": "^4.6.1"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-stage-0": "^6.24.1"
+  }
+}

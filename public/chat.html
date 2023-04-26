@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>RealChat</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <br>
+    <div id="login" style="color: white; text-align: center;
+    background-color: black;">
+      <h1>Welcome to RealChat</h1><br>
+      <h3>Please Log in</h3>
+      <form id="loginform" style="text-align: center; position: inherit;">
+        <label for="username"></label>
+        <input type="text" id="username" style="width: 50%" placeholder="Enter Username..." name="username" required />
+        <br />
+        <br />
+        <button class="login" type="submit">Login</button>
+      </form>
+    </div>
+
+    <div id="chat" style="display: none">
+      <h1>RealChat</h1>
+      <ul id="messages"></ul>
+      <form id="chatform">
+        <input
+          id="m"
+          placeholder="Enter your message..."
+          autocomplete="off"
+          required
+        />
+        <button>Send</button>
+      </form>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script>
+     var socket = io();
+      $("#loginform").submit(function (e) {
+          e.preventDefault();
+          console.log('nkasud sa log in')
+          var username = $("#username").val();
+          // TODO: Validate the username and password
+          $("#login").hide();
+          $("#chat").show();
+          
+          console.log("joining message will emit");
+          socket.emit("joining msg", username);
+          console.log('joining msg is emitted');
+
+        });
+        socket.on("chat message", function (msg) {
+                    $("#messages").append($("<li>").text(msg));
+                });
+        $("#chatform").submit(function (e) {
+        e.preventDefault();
+        var message = $("#m").val();
+        var username = $("#username").val();
+        socket.emit("chat message", username + ":  " + message);
+        $("#messages").append($('<li>').text("You: " + message));
+        $("#m").val('');
+        return false;
+        });
+      
+    </script>
+  </body>
+</html>
