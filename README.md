@@ -1,4 +1,4 @@
-Real-Time Chat Web Application
+Real-Time Chat Web Application.
 This is a simple real-time chat web application built using Node.js and Socket.IO. The application allows users 
 to join chat rooms and exchange messages in real-time.
 
@@ -11,7 +11,7 @@ Run npm install to install the dependencies.
 Usage
 To start the application, run the following command:
 
-Copy npm start
+npm start
 The application will be accessible at http://localhost:8080.
 
 To join a chat room, just enter a username and you'll be redirected to chatroom. Once you have joined the chatroom, you can send and receive messages in real-time.
